@@ -3,7 +3,7 @@
 Settings in **config.neon**
 ```neon
 extensions:
-    console: \Atrreid\Console\DI\ConsoleExtension
+    console: Atrreid\Console\DI\ConsoleExtension
 ```
 
 available settings
