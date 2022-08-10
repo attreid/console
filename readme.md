@@ -17,7 +17,7 @@ console:
 Add route
 ```php
 class RouterFactory
-    public function __construct(private readonly ConsoleRouterFactory $consoleRouterFactory)
+    public function __construct(private readonly \Attreid\Console\Routing\RouterFactory $consoleRouterFactory)
 	{
 	}
 
