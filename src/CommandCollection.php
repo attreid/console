@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Attreid\Console;
 
+use Nette\Application\Response;
+
 abstract class CommandCollection
 {
 	private readonly Console $console;
@@ -18,4 +20,8 @@ abstract class CommandCollection
 		$this->console->printLine($string);
 	}
 
+	protected function sendResponse(Response $response): void
+	{
+		$this->console->sendResponse($response);
+	}
 }

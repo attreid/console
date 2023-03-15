@@ -28,9 +28,15 @@ final class ConsolePresenter extends Presenter
 	{
 		try {
 			$this->console->execute($collection, $command, $this->getParameters());
+			if (($response = $this->console->getResponse()) !== null) {
+				$this->sendResponse($response);
+			} else {
+				$this->console->renderOutput();
+			}
 		} catch (InvalidArgumentException) {
 			if ($this->console->consoleMode()) {
 				$this->console->printLine("Command '$collection:$command' doesn't exist.");
+				$this->console->renderOutput();
 			} else {
 				$this->error();
 			}

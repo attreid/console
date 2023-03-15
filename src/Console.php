@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Attreid\Console;
 
 use Attreid\Exceptions\Console\InvalidArgumentException;
+use Nette\Application\Response;
 use Nette\Utils\Html;
 use Nette\Utils\Strings;
 use ReflectionClass;
@@ -15,6 +16,8 @@ final class Console
 {
 	/** @var CommandCollection[] */
 	private array $collections = [];
+	private ?Response $response=null;
+	private string $output = '';
 
 	public function __construct(private readonly bool $consoleMode, private readonly string $prefix)
 	{
@@ -192,12 +195,27 @@ final class Console
 	public function printLine(bool|string|Html $string = null): void
 	{
 		if ($string) {
-			echo $string;
+			$this->output .= $string;
 		}
 		if ($this->consoleMode) {
-			echo "\n";
+			$this->output .= "\n";
 		} else {
-			echo '<br/>';
+			$this->output .= '<br/>';
 		}
+	}
+
+	public function sendResponse(Response $response): void
+	{
+		$this->response = $response;
+	}
+
+	public function getResponse(): ?Response
+	{
+		return $this->response;
+	}
+
+	public function renderOutput(): void
+	{
+		echo $this->output;
 	}
 }
