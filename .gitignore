@@ -1,3 +1,9 @@
 /vendor
 /composer.lock
 .idea/
+.vscode/
+.DS_Store
+.history/
+/coverage.html
+/coverage
+*.log

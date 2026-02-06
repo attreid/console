@@ -35,7 +35,7 @@ final class Console
 		$this->collections[$class->getShortName()] = $collection;
 	}
 
-	public function execute(string $collection = null, string $command = null, array $args = []): void
+	public function execute(?string $collection = null, ?string $command = null, array $args = []): void
 	{
 		if (isset($this->collections[$collection])) {
 			$class = new ReflectionClass($this->collections[$collection]);
@@ -75,7 +75,7 @@ final class Console
 		$this->printLine($line);
 	}
 
-	private function printHelp(ReflectionClass $class = null): void
+	private function printHelp(?ReflectionClass $class = null): void
 	{
 		$printHelp = function (ReflectionClass $class) {
 			if ($this->consoleMode) {
@@ -192,7 +192,7 @@ final class Console
 		return $result;
 	}
 
-	public function printLine(bool|string|Html $string = null): void
+	public function printLine(bool|string|Html|null $string = null): void
 	{
 		if ($string) {
 			$this->output .= $string;

@@ -1,6 +1,8 @@
 # Nette Cli console with web interface
 
-Settings in **config.neon**
+**Requirements:** PHP 8.4+
+
+## Settings in **config.neon**
 ```neon
 extensions:
     console: Atrreid\Console\DI\ConsoleExtension
@@ -54,3 +56,26 @@ or in browser with Tracy on
 ```
 http://domain/cli/ClassWithCommands/command?variable=value
 ```
+
+## Development / Docker
+
+Build and run the PHP 8.4 CLI container:
+
+```bash
+docker compose up -d
+docker compose exec php composer install
+docker compose exec php composer test
+docker compose exec php php index.php ClassWithCommands:command /variable=value
+```
+
+One-off run (e.g. install and test without keeping container):
+
+```bash
+docker compose run --rm php composer install
+docker compose run --rm php composer test
+```
+
+## Tests
+
+- **Run tests:** `composer test` (works locally or inside Docker)
+- **Run tests with coverage:** `composer test:coverage` (generates `coverage.html`)
