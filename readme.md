@@ -77,13 +77,13 @@ docker compose run --rm php composer test
 
 ## Tests
 
-- **V Dockeru (doporučeno):**
+- **In Docker (recommended):**
 
 ```bash
 docker compose run --rm php composer test
 docker compose run --rm php composer test:coverage
 ```
 
-- **Lokálně (pokud máš PHP 8.4 + Composer):**
-  - Spuštění testů: `composer test`
-  - Spuštění testů s coverage: `composer test:coverage` (vygeneruje `coverage.html`)
+- **Locally (if you have PHP 8.4 + Composer):**
+  - Run tests: `composer test`
+  - Run tests with coverage: `composer test:coverage` (generates `coverage.html`)
